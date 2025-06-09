@@ -1,0 +1,224 @@
+/* Modern CSS Reset using CSS Layers */
+@layer base, third-party, project, utilities;
+@layer base.reset, base.kds;
+@layer third-party.imports, third-party.overrides;
+@layer project.base, project.overrides;
+
+/*
+Example of how to import third-party and project styles
+@import url('third-party.css') layer(third-party.imports);
+@import url('boostrap-components.css') layer(third-party.imports);
+@import url('kds-utilities.css') layer(utilities); */
+
+/* Reset Layer - Basic resets */
+@layer reset {
+  /* Box sizing rules
+   * - Makes element sizing more predictable
+   * - Prevents unexpected layout shifts
+   * - Simplifies responsive design calculations
+   */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    /* padding: 0; */
+  }
+
+  /* Remove default margin
+   * - Eliminates inconsistent spacing across browsers
+   * - Provides a clean slate for typography
+   * - Makes vertical rhythm easier to manage
+   */
+  body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+    margin: 0;
+  }
+
+  /* Remove list styles on ul, ol elements
+   * - Provides consistent list styling across browsers
+   * - Makes it easier to style lists from scratch
+   * - Prevents unwanted indentation
+   */
+  ul[class],
+  ol[class] {
+    list-style: none;
+    padding: 0;
+  }
+
+  /* Set core root defaults
+   * - Improves accessibility for keyboard navigation
+   * - Provides smooth scrolling for better UX
+   * - Maintains consistent behavior across browsers
+   */
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+
+  /* Set core body defaults
+   * - Ensures full viewport height usage
+   * - Optimizes text rendering for better readability
+   * - Sets a consistent line height for better typography
+   */
+  body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+  }
+
+  /* Remove all animations, transitions and smooth scroll for people that prefer not to see them
+   * - Respects user preferences for reduced motion
+   * - Improves accessibility for users with vestibular disorders
+   * - Reduces potential for motion sickness
+   */
+  @media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Defaults Layer - Sensible defaults */
+/* Make images easier to work with
+   * - Prevents layout shifts from images loading
+   * - Ensures responsive images work properly
+   * - Maintains aspect ratios
+   */
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons
+   * - Maintains consistent typography across form elements
+   * - Improves form element styling consistency
+   * - Makes form elements match the rest of the UI
+   */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Set default font size and family
+   * - Provides consistent typography across browsers
+   * - Uses system fonts for better performance
+   * - Ensures good readability with 16px base size
+   */
+html {
+  font-family: var(--kds-font-body-font-family);
+  font-size: var(--kds-font-body-font-size);
+  font-weight: var(--kds-font-body-font-weight);
+  line-height: var(--kds-font-body-line-height);
+  letter-spacing: var(--kds-font-body-letter-spacing);
+  text-transform: var(--kds-font-body-text-transform);
+}
+
+/* Improve tap target sizes and touch handling
+   * - Eliminates 300ms delay on touch events for better responsiveness
+   * - Improves scrolling performance on touch devices
+   * - Reduces the need for JavaScript-based touch handling
+   * - Makes touch interactions feel more native
+   * - Prevents accidental double-tap zooming
+   */
+button,
+[role="button"],
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+  font-size: var(--kds-font-body-font-size);
+  line-height: var(--kds-font-body-line-height);
+  color: var(--kds-fg-base);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  line-height: var(--kds-font-line-height-heading);
+  font-weight: var(--kds-font-weight-bold);
+  color: var(--kds-fg-base);
+}
+
+h1 {
+  font-size: var(--h-fluid-1);
+}
+
+h2 {
+  font-size: var(--h-fluid-2);
+}
+
+h3 {
+  font-size: var(--h-fluid-3);
+}
+
+h4 {
+  font-size: var(--h-fluid-4);
+}
+
+h5 {
+  font-size: var(--h-fluid-5);
+}
+
+h6 {
+  font-size: var(--h-fluid-6);
+}
+
+/* Accessibility Layer - Focus and interaction styles */
+/* Improve focus styles
+   * - Makes focus states visible for keyboard navigation
+   * - Improves accessibility compliance
+   * - Maintains consistent focus appearance
+   */
+:focus-visible {
+  outline: var(--kds-border-width-sm) solid var(--kds-bg-info-emphasis-base);
+  outline-offset: var(--kds-border-width-sm);
+}
+
+/* Improve text selection
+   * - Makes selected text more visible
+   * - Improves readability of selected content
+   * - Maintains consistent selection styling
+   */
+::selection {
+  background-color: var(--kds-fg-brand-base);
+  color: white;
+}
+
+
+/* Move to tokens */
+
+/* @link https://utopia.fyi/type/calculator?c=400,16,1.15,1240,18,1.22,5,0,&s=0.75|0.45|0.2|0.15,1.5|2|2.5|3|4|6|8,s-l&g=s,l,xl,12 */
+
+:root {
+  --h-fluid-6: clamp(1rem, 0.9405rem + 0.2381vw, 1.125rem);
+  --h-fluid-5: clamp(1rem, 0.9405rem + 0.2381vw, 1.125rem);
+  --h-fluid-4: clamp(1.125rem, 1.0655rem + 0.2381vw, 1.25rem);
+  --h-fluid-3: clamp(1.25rem, 1.131rem + 0.4762vw, 1.5rem);
+  --h-fluid-2: clamp(1.5rem, 1.2619rem + 0.9524vw, 2rem);
+  --h-fluid-1: clamp(2rem, 1.5238rem + 1.9048vw, 3rem);
+}

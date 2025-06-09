@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern CSS Reset Demo</title>
+    <link rel="stylesheet" href="../dist/reset.css">
+    <link rel="stylesheet" href="../tokens.css">
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .demo-section {
+            margin-block: var(--kds-layout-gap-md);
+            padding: var(--kds-layout-gap-lg);
+            border: var(--kds-border-width-sm) solid var(--kds-key-gray-300);
+            border-radius: var(--kds-border-radius-md);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Modern CSS Reset Demo</h1>
+        <p>This page demonstrates the effects of the modern CSS reset using CSS layers.</p>
+        <div class="demo-section">
+            <h2>Typography</h2>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h5>Heading 5</h5>
+            <h6>Heading 6</h6>
+            <p>This is a paragraph with some <strong>bold</strong> and <em>italic</em> text.</p>
+        </div>
+        <div class="demo-section">
+            <h2>Lists</h2>
+            <ul>
+                <li>Unordered list item 1</li>
+                <li>Unordered list item 2</li>
+                <li>Unordered list item 3</li>
+            </ul>
+            <ol>
+                <li>Ordered list item 1</li>
+                <li>Ordered list item 2</li>
+                <li>Ordered list item 3</li>
+            </ol>
+        </div>
+        <div class="demo-section">
+            <h2>Form Elements</h2>
+            <form>
+                <div class="form-group">
+                    <label for="text">Text Input</label>
+                    <input type="text" id="text" placeholder="Enter some text">
+                </div>
+                <div class="form-group">
+                    <label for="select">Select</label>
+                    <select id="select">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="textarea">Textarea</label>
+                    <textarea id="textarea" rows="3" placeholder="Enter some text"></textarea>
+                </div>
+                <button type="button" class="button">Click Me</button>
+            </form>
+        </div>
+        <div class="demo-section">
+            <h2>Images</h2>
+            <img src="https://picsum.photos/400/200" alt="Random image">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "ds-css-reset",
+  "version": "1.0.0",
+  "description": "A modern CSS reset using CSS layers",
+  "main": "dist/reset.css",
+  "scripts": {
+    "build": "mkdir -p dist && cp src/reset.css dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "css",
+    "reset",
+    "css-layers",
+    "modern-css"
+  ],
+  "author": "",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}
