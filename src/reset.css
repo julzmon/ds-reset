@@ -11,7 +11,7 @@ Example of how to import third-party and project styles
 @import url('kds-utilities.css') layer(utilities); */
 
 /* Reset Layer - Basic resets */
-@layer reset {
+@layer base.reset {
   /* Box sizing rules
    * - Makes element sizing more predictable
    * - Prevents unexpected layout shifts
@@ -30,7 +30,18 @@ Example of how to import third-party and project styles
    * - Provides a clean slate for typography
    * - Makes vertical rhythm easier to manage
    */
-  body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
     margin: 0;
   }
 
@@ -87,128 +98,145 @@ Example of how to import third-party and project styles
 }
 
 /* Defaults Layer - Sensible defaults */
-/* Make images easier to work with
+
+@layer base.kds {
+  /* Make images easier to work with
    * - Prevents layout shifts from images loading
    * - Ensures responsive images work properly
    * - Maintains aspect ratios
    */
-img, picture {
-  max-width: 100%;
-  display: block;
-}
+  img,
+  picture {
+    max-width: 100%;
+    display: block;
+  }
 
-/* Inherit fonts for inputs and buttons
+  /* Inherit fonts for inputs and buttons
    * - Maintains consistent typography across form elements
    * - Improves form element styling consistency
    * - Makes form elements match the rest of the UI
    */
-input, button, textarea, select {
-  font: inherit;
-}
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
 
-/* Set default font size and family
+  /* Set default font size and family
    * - Provides consistent typography across browsers
    * - Uses system fonts for better performance
    * - Ensures good readability with 16px base size
    */
-html {
-  font-family: var(--kds-font-body-font-family);
-  font-size: var(--kds-font-body-font-size);
-  font-weight: var(--kds-font-body-font-weight);
-  line-height: var(--kds-font-body-line-height);
-  letter-spacing: var(--kds-font-body-letter-spacing);
-  text-transform: var(--kds-font-body-text-transform);
-}
+  html {
+    font-family: var(--kds-font-body-font-family);
+    font-size: var(--kds-font-body-font-size);
+    font-weight: var(--kds-font-body-font-weight);
+    line-height: var(--kds-font-body-line-height);
+    letter-spacing: var(--kds-font-body-letter-spacing);
+    text-transform: var(--kds-font-body-text-transform);
+  }
 
-/* Improve tap target sizes and touch handling
+  /* Improve tap target sizes and touch handling
    * - Eliminates 300ms delay on touch events for better responsiveness
    * - Improves scrolling performance on touch devices
    * - Reduces the need for JavaScript-based touch handling
    * - Makes touch interactions feel more native
    * - Prevents accidental double-tap zooming
    */
-button,
-[role="button"],
-input,
-select,
-textarea {
-  touch-action: manipulation;
-}
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
 
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-}
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
 
-p {
-  text-wrap: pretty;
-  font-size: var(--kds-font-body-font-size);
-  line-height: var(--kds-font-body-line-height);
-  color: var(--kds-fg-base);
-}
+  p {
+    text-wrap: pretty;
+    font-size: var(--kds-font-body-font-size);
+    line-height: var(--kds-font-body-line-height);
+    color: var(--kds-fg-base);
+  }
 
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-  color: currentColor;
-}
+  /* A elements that don't have a class get default styles */
+  a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+  }
 
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 5ex;
-}
+  /* Anything that has been anchored to should have extra scroll margin */
+  :target {
+    scroll-margin-block: 5ex;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  text-wrap: balance;
-  line-height: var(--kds-font-line-height-heading);
-  font-weight: var(--kds-font-weight-bold);
-  color: var(--kds-fg-base);
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+    line-height: var(--kds-font-line-height-heading);
+    font-weight: var(--kds-font-weight-bold);
+    color: var(--kds-fg-base);
+  }
 
-h1 {
-  font-size: var(--h-fluid-1);
-}
+  h1 {
+    font-size: var(--h-fluid-1);
+  }
 
-h2 {
-  font-size: var(--h-fluid-2);
-}
+  h2 {
+    font-size: var(--h-fluid-2);
+  }
 
-h3 {
-  font-size: var(--h-fluid-3);
-}
+  h3 {
+    font-size: var(--h-fluid-3);
+  }
 
-h4 {
-  font-size: var(--h-fluid-4);
-}
+  h4 {
+    font-size: var(--h-fluid-4);
+  }
 
-h5 {
-  font-size: var(--h-fluid-5);
-}
+  h5 {
+    font-size: var(--h-fluid-5);
+  }
 
-h6 {
-  font-size: var(--h-fluid-6);
-}
+  h6 {
+    font-size: var(--h-fluid-6);
+  }
 
-/* Accessibility Layer - Focus and interaction styles */
-/* Improve focus styles
+  /* Accessibility Layer - Focus and interaction styles */
+  /* Improve focus styles
    * - Makes focus states visible for keyboard navigation
    * - Improves accessibility compliance
    * - Maintains consistent focus appearance
    */
-:focus-visible {
-  outline: var(--kds-border-width-sm) solid var(--kds-bg-info-emphasis-base);
-  outline-offset: var(--kds-border-width-sm);
-}
+  :focus-visible {
+    outline: var(--kds-border-width-sm) solid var(--kds-bg-info-emphasis-base);
+    outline-offset: var(--kds-border-width-sm);
+  }
 
-/* Improve text selection
+  /* Improve text selection
    * - Makes selected text more visible
    * - Improves readability of selected content
    * - Maintains consistent selection styling
    */
-::selection {
-  background-color: var(--kds-fg-brand-base);
-  color: white;
+  ::selection {
+    background-color: var(--kds-fg-brand-base);
+    color: white;
+  }
 }
-
 
 /* Move to tokens */
 
